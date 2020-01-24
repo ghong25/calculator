@@ -16,7 +16,6 @@ class Calculator {
         this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
-    // multiply number by -1
     neg() {
         this.currentOperand = this.currentOperand * -1;
     }
@@ -33,7 +32,6 @@ class Calculator {
         this.currentOperand = Math.pow(this.currentOperand, 2);
     }
 
-    // natural log
     ln() {
         this.currentOperand = Math.log(this.currentOperand);
     }
