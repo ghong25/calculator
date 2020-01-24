@@ -11,9 +11,35 @@ class Calculator {
         this.operation = undefined;
     }
 
+    // remove last element of current operand
     delete() {
-        // remove last element of current operand
         this.currentOperand = this.currentOperand.toString().slice(0, -1);
+    }
+
+    // multiply number by -1
+    neg() {
+        this.currentOperand = this.currentOperand * -1;
+    }
+
+    factorial() {
+        let result = 1;
+        for (let i = 1; i <= this.currentOperand; i++) {
+            result *= i;
+        }
+        this.currentOperand = result;
+    }
+
+    squared() {
+        this.currentOperand = Math.pow(this.currentOperand, 2);
+    }
+
+    // natural log
+    ln() {
+        this.currentOperand = Math.log(this.currentOperand);
+    }
+
+    sqrt() {
+        this.currentOperand = Math.pow(this.currentOperand, 1/2);
     }
 
     appendNumber(number) {
@@ -41,16 +67,20 @@ class Calculator {
             return;}
         switch (this.operation) {
             case '+':
-                computation = prev + current
+                computation = prev + current;
                 break
             case '-':
-                computation = prev - current
+                computation = prev - current;
                 break
             case '*':
-                computation = prev * current
+                computation = prev * current;
                 break
             case '÷':
-                computation = prev / current
+                if (current == 0) throw "undefined";
+                computation = prev / current;
+                break
+            case 'xʸ':
+                computation = Math.pow(prev, current);
                 break
             default:
                 return
@@ -97,6 +127,13 @@ const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButton = document.querySelector('[data-equals]')
 const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
+const factorialButton = document.querySelector('[data-factorial]')
+const negButton = document.querySelector('[data-neg]')
+const hexButton = document.querySelector('[data-hex]')
+const squaredButton = document.querySelector('[data-squared]')
+const lnButton = document.querySelector('[data-ln]')
+const sqrtButton = document.querySelector('[data-sqrt]')
+
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
@@ -128,5 +165,32 @@ allClearButton.addEventListener('click', button => {
 
 deleteButton.addEventListener('click', button => {
     calculator.delete();
+    calculator.updateDisplay();
+})
+
+
+factorialButton.addEventListener('click', button => {
+    calculator.factorial();
+    calculator.updateDisplay();
+})
+
+
+negButton.addEventListener('click', button => {
+    calculator.neg();
+    calculator.updateDisplay();
+})
+
+squaredButton.addEventListener('click', button => {
+    calculator.squared();
+    calculator.updateDisplay();
+})
+
+lnButton.addEventListener('click', button => {
+    calculator.ln();
+    calculator.updateDisplay();
+})
+
+sqrtButton.addEventListener('click', button => {
+    calculator.sqrt();
     calculator.updateDisplay();
 })
