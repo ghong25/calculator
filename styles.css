@@ -16,13 +16,13 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    grid-template-columns: repeat(5, 100px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+    grid-template-columns: repeat(5, 15vh);
+    grid-template-rows: minmax(120px, auto) repeat(5, 15vh);
 }
 
 .calculator-grid > button {
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 5vmin;
     border: 1px solid white;
     outline: none;
     background-color: rgba(255, 255, 255, 0.75);
@@ -43,17 +43,18 @@ body {
     align-items: flex-end;
     justify-content: space-around;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
     word-wrap: break-word;
     word-break: break-all;
+    height: 120px;
 }
 
 .output .previous-operand {
     color: rgba(255, 255, 255 , 0.75);
-    font-size: 1.5rem;
+    font-size: 4vh;
 }
 
 .output .current-operand {
     color: white;
-    font-size: 2.5rem;
+    font-size: 5vh;
 }
